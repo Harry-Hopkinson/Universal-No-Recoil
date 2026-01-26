@@ -16,8 +16,8 @@
 
 #include "ui/Bitmap.h"
 #include "ui/Themes.h"
+#include "ui/Font.h"
 #include "ui/widgets/Button.h"
-#include "ui/widgets/Font.h"
 
 // Window Procedure for handling events
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)

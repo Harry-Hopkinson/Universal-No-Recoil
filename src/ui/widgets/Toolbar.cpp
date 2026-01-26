@@ -1,10 +1,9 @@
 #include "Toolbar.h"
 
+#include "../Font.h"
 #include "../Themes.h"
 #include "../../Globals.h"
 #include "../../recoil/Recoil.h"
-
-#include "Font.h"
 
 #include <cstdio>
 

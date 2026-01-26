@@ -7,8 +7,8 @@
 #include "../scenes/Scenes.h"
 
 #include "../ui/Bitmap.h"
+#include "../ui/Font.h"
 #include "../ui/Themes.h"
-#include "../ui/widgets/Font.h"
 
 #include "../utils/LayoutUtils.h"
 

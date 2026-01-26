@@ -1,7 +1,7 @@
 #include "../ui/Bitmap.h"
 #include "../ui/Themes.h"
+#include "../ui/Font.h"
 #include "../ui/widgets/Button.h"
-#include "../ui/widgets/Font.h"
 #include "../ui/widgets/Toolbar.h"
 
 #include "../utils/LayoutUtils.h"

@@ -1,6 +1,6 @@
 #include "Font.h"
 
-#include "../Themes.h"
+#include "Themes.h"
 
 #include <windows.h>
 
