@@ -18,6 +18,7 @@
 #include "ui/Themes.h"
 #include "ui/Font.h"
 #include "ui/widgets/Button.h"
+#include "ui/widgets/Slider.h"
 
 // Window Procedure for handling events
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
@@ -39,6 +40,8 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
             SendMessage(hwnd, WM_SETICON, ICON_BIG, (LPARAM)hIcon);
 
             Buttons::CreateOperatorSelectionButtons();
+            Sliders::CreateSliders();
+
             Bitmap::InitialiseOperatorBitmaps(AttackerNames, DefenderNames);
             Font::CreateFonts();
         }
@@ -188,6 +191,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         case WM_ENTERSIZEMOVE:
         {
             IsResizing = true;
+
             return 0;
         }
         break;
@@ -204,6 +208,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         case WM_DESTROY:
         {
             Buttons::ClearButtons();
+            Sliders::ClearSliders();
 
             Bitmap::CleanupOperatorBitmaps();
             Bitmap::CleanupWeaponBitmaps();

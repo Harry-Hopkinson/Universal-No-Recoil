@@ -13,9 +13,6 @@
 
 #include "../utils/WindowUtils.h"
 
-#define ceilf(x) ((int)(x) + ((x) > (int)(x) ? 1 : 0))
-#define round(x) (ceilf((x) * 2.0f) / 2.0f)
-
 namespace ButtonHandler
 {
 
@@ -61,38 +58,6 @@ namespace ButtonHandler
     void HandleJoinDiscord(HWND)
     {
         system("start https://ko-fi.com/harryhopkinson");
-    }
-
-    void HandleVerticalRecoilPlus(HWND hwnd)
-    {
-        CurrentRecoil.Vertical = round(CurrentRecoil.Vertical + 0.5f);
-        Files::SaveConfig();
-
-        WindowUtils::InvalidateWindow(hwnd);
-    }
-
-    void HandleVerticalRecoilMinus(HWND hwnd)
-    {
-        CurrentRecoil.Vertical = round(CurrentRecoil.Vertical - 0.5f);
-        Files::SaveConfig();
-
-        WindowUtils::InvalidateWindow(hwnd);
-    }
-
-    void HandleHorizontalRecoilPlus(HWND hwnd)
-    {
-        CurrentRecoil.Horizontal = round(CurrentRecoil.Horizontal + 0.5f);
-        Files::SaveConfig();
-
-        WindowUtils::InvalidateWindow(hwnd);
-    }
-
-    void HandleHorizontalRecoilMinus(HWND hwnd)
-    {
-        CurrentRecoil.Horizontal = round(CurrentRecoil.Horizontal - 0.5f);
-        Files::SaveConfig();
-
-        WindowUtils::InvalidateWindow(hwnd);
     }
 
     void HandleSavePreset(HWND hwnd)

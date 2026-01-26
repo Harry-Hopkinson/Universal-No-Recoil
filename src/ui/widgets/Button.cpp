@@ -41,23 +41,14 @@ namespace Buttons
         ButtonsVector.push_back(
             { 6, startX + 180, startY + 350, 160, 40, "Join Discord (Access via Ko-Fi)" });
 
-        // Vertical Recoil
-        ButtonsVector.push_back({ 7, startX + 240, startY - 150, 80, 40, "+" });
-        ButtonsVector.push_back({ 8, startX + 150, startY - 150, 80, 40, "-" });
-
-        // Horizontal Recoil
-        ButtonsVector.push_back({ 9, startX + 240, startY - 100, 80, 40, "+" });
         ButtonsVector.push_back(
-            { 10, startX + 150, startY - 100, 80, 40, "-" });
+            { 7, startX + 100, startY + 100, 140, 40, "Save Preset" });
 
         ButtonsVector.push_back(
-            { 11, startX + 100, startY + 100, 140, 40, "Save Preset" });
+            { 8, startX, startY + 400, 160, 40, "Update Tool" });
 
         ButtonsVector.push_back(
-            { 12, startX, startY + 400, 160, 40, "Update Tool" });
-
-        ButtonsVector.push_back(
-            { 13, startX + 180, startY + 400, 160, 40,
+            { 9, startX + 180, startY + 400, 160, 40,
               EnableController ? "Disable Controller" : "Enable Controller" });
     }
 

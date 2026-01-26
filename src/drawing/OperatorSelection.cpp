@@ -1,7 +1,9 @@
 #include "../ui/Bitmap.h"
 #include "../ui/Themes.h"
 #include "../ui/Font.h"
+
 #include "../ui/widgets/Button.h"
+#include "../ui/widgets/Slider.h"
 #include "../ui/widgets/Toolbar.h"
 
 #include "../utils/LayoutUtils.h"
@@ -57,6 +59,8 @@ namespace Drawing
         }
 
         Toolbar::DrawToolBar(memDC, right, bottom);
+
+        Sliders::DrawSliders(memDC);
 
         // Draw all buttons
         for (const auto& btn : Buttons::GetButtons())

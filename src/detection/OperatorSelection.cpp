@@ -40,24 +40,12 @@ namespace ClickDetection
                         ButtonHandler::HandleJoinDiscord(hwnd);
                         break;
                     case 7:
-                        ButtonHandler::HandleVerticalRecoilPlus(hwnd);
-                        break;
-                    case 8:
-                        ButtonHandler::HandleVerticalRecoilMinus(hwnd);
-                        break;
-                    case 9:
-                        ButtonHandler::HandleHorizontalRecoilPlus(hwnd);
-                        break;
-                    case 10:
-                        ButtonHandler::HandleHorizontalRecoilMinus(hwnd);
-                        break;
-                    case 11:
                         ButtonHandler::HandleSavePreset(hwnd);
                         break;
-                    case 12:
+                    case 8:
                         ButtonHandler::HandleUpdateTool(hwnd);
                         break;
-                    case 13:
+                    case 9:
                         ButtonHandler::HandleController(hwnd);
                         break;
 
