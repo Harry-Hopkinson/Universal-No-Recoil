@@ -5,11 +5,12 @@
 #include "../../recoil/Recoil.h"
 #include "../Themes.h"
 
-#include <cmath>
 #include <cstdio>
 
 #define min(a, b) ((a) < (b) ? (a) : (b))
 #define max(a, b) ((a) > (b) ? (a) : (b))
+
+#define round(x) ((x) < 0 ? (int)((x) - 0.5f) : (int)((x) + 0.5f))
 
 namespace
 {
@@ -29,7 +30,7 @@ namespace
         if (step <= 0.0f)
             return value;
 
-        return std::round(value / step) * step;
+        return round(value / step) * step;
     }
 
     static float ValueFromMouse(const Sliders::Slider& s, int mouseX)
@@ -239,4 +240,5 @@ namespace Sliders
 
         return true;
     }
+
 } // namespace Sliders
