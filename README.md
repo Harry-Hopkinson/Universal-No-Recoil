@@ -5,7 +5,7 @@
     </a>
     <hr>
     <a href="http://discord.gg/KhdXPqQxK8">
-        <img src="https://img.shields.io/badge/Join%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Join Discord">
+        <img src="https://img.shields.io/badge/Join%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Join Discord (Max Members Reached)">
     </a>
     <a href="https://ko-fi.com/harryhopkinson">
         <img src="https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white" alt="Support the Project">
