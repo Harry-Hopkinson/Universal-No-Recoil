@@ -120,6 +120,9 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
             int mouseX = GET_X_LPARAM(lParam);
             int mouseY = GET_Y_LPARAM(lParam);
 
+            if (Sliders::OnLButtonDown(hwnd, mouseX, mouseY))
+                break;
+
             RECT rect;
             GetClientRect(hwnd, &rect);
             int windowWidth = rect.right;
@@ -140,6 +143,27 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
                 default:
                     break;
             }
+        }
+        break;
+
+        case WM_MOUSEMOVE:
+        {
+            int mouseX = GET_X_LPARAM(lParam);
+            int mouseY = GET_Y_LPARAM(lParam);
+            bool leftDown = (wParam & MK_LBUTTON) != 0;
+
+            if (Sliders::OnMouseMove(hwnd, mouseX, mouseY, leftDown))
+                break;
+        }
+        break;
+
+        case WM_LBUTTONUP:
+        {
+            int mouseX = GET_X_LPARAM(lParam);
+            int mouseY = GET_Y_LPARAM(lParam);
+
+            if (Sliders::OnLButtonUp(hwnd, mouseX, mouseY))
+                break;
         }
         break;
 
