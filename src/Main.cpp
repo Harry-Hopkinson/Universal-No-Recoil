@@ -108,7 +108,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         case WM_GETMINMAXINFO:
         {
             LPMINMAXINFO lpMMI = (LPMINMAXINFO)lParam;
-            lpMMI->ptMinTrackSize.x = 1150;
+            lpMMI->ptMinTrackSize.x = 1200;
             lpMMI->ptMinTrackSize.y = 950;
 
             return 0;
