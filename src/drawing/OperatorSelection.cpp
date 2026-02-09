@@ -67,9 +67,9 @@ namespace Drawing
             DrawButton(memDC, btn);
 
         // Draw recoil text
-        RECT verticalLabelRect = { right - 340, (bottom - 90) / 2 - 140,
+        RECT verticalLabelRect = { right - 380, (bottom - 90) / 2 - 140,
                                    right - 150, (bottom - 90) / 2 - 120 };
-        RECT horizontalLabelRect = { right - 355, (bottom - 90) / 2 - 90,
+        RECT horizontalLabelRect = { right - 395, (bottom - 90) / 2 - 90,
                                      right - 150, (bottom - 90) / 2 - 70 };
         DrawText(
             memDC, "Vertical Recoil:", -1, &verticalLabelRect,

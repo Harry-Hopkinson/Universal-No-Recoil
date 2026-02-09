@@ -100,12 +100,13 @@ namespace Sliders
     {
         SlidersVector.clear();
 
-        int startX = WINDOW_WIDTH - 200 - (350 / 2);
-        int startY = (WINDOW_HEIGHT - 75) / 2;
+        const int sliderWidth = 200;
+        const int startX = WINDOW_WIDTH - sliderWidth - 75;
+        const int startY = (WINDOW_HEIGHT - 70) / 2;
 
         Slider vertical;
         vertical.id = 100;
-        vertical.x = startX + 150;
+        vertical.x = startX;
         vertical.y = startY - 170;
         vertical.width = 200;
         vertical.height = 24;
@@ -117,7 +118,7 @@ namespace Sliders
 
         Slider horizontal;
         horizontal.id = 101;
-        horizontal.x = startX + 150;
+        horizontal.x = startX;
         horizontal.y = startY - 120;
         horizontal.width = 200;
         horizontal.height = 24;
