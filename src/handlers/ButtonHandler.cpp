@@ -60,7 +60,7 @@ namespace ButtonHandler
 
     void HandleJoinDiscord(HWND)
     {
-        system("start https://discord.gg/KhdXPqQxK8");
+        system("start https://ko-fi.com/harryhopkinson");
     }
 
     void HandleVerticalRecoilPlus(HWND hwnd)

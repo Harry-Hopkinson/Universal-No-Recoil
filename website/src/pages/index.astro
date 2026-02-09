@@ -212,6 +212,52 @@ import BaseLayout from "../BaseLayout.astro";
       color: white;
     }
 
+    .supporter-info-box {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .info-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .info-text {
+      color: white;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .info-text strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-weight: 600;
+    }
+
+    .support-link {
+      color: #ffd700;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+      margin-left: 0.5rem;
+    }
+
+    .support-link:hover {
+      color: #ffed4e;
+      text-decoration: underline;
+    }
+
     @keyframes fadeInUp {
       to {
         opacity: 1;
@@ -240,6 +286,15 @@ import BaseLayout from "../BaseLayout.astro";
       .steps-container {
         grid-template-columns: 1fr;
       }
+
+      .supporter-info-box {
+        max-width: 90%;
+        padding: 0.875rem 1.25rem;
+      }
+
+      .info-text {
+        font-size: 0.875rem;
+      }
     }
   </style>
 
@@ -262,12 +317,17 @@ import BaseLayout from "../BaseLayout.astro";
           <div class="buttons">
             <a href="/download" class="btn primary">💾 Download</a>
             <a href="/themes" class="btn tertiary">🎨 Themes</a>
+
             <a
               href="https://github.com/Harry-Hopkinson/R6-No-Recoil/blob/main/README.md"
-              class="btn secondary">📖 Wiki (Github)</a
+              class="btn secondary"
+              target="_blank">📖 Wiki (Github)</a
             >
-            <a href="https://ko-fi.com/harryhopkinson" class="btn tertiary"
-              >💸 Support</a
+
+            <a
+              href="https://ko-fi.com/harryhopkinson"
+              class="btn tertiary"
+              target="_blank">💸 Support</a
             >
           </div>
 
@@ -297,8 +357,8 @@ import BaseLayout from "../BaseLayout.astro";
               </svg>
             </a>
 
-            <!-- <a
-              href="http://discord.gg/KhdXPqQxK8"
+            <a
+              href="https://ko-fi.com/harryhopkinson"
               target="_blank"
               class="icon-btn discord-btn"
               aria-label="Join our Discord Server"
@@ -312,7 +372,20 @@ import BaseLayout from "../BaseLayout.astro";
                   d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025 13.2 13.2 0 0 0-3.257 1.011.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612"
                 ></path>
               </svg>
-            </a> -->
+            </a>
+          </div>
+
+          <div class="supporter-info-box">
+            <div class="info-icon">💬</div>
+            <div class="info-text">
+              <strong>Discord Access:</strong> Available exclusively for Ko-fi supporters.
+
+              <a
+                href="https://ko-fi.com/harryhopkinson"
+                class="support-link"
+                target="_blank">Support now →</a
+              >
+            </div>
           </div>
         </div>
       </div>

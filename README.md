@@ -4,9 +4,10 @@
         <img src="https://raw.githubusercontent.com/Harry-Hopkinson/R6-No-Recoil/master/website/public/app.png" alt="App Preview" width="750px">
     </a>
     <hr>
-    <a href="http://discord.gg/KhdXPqQxK8">
-        <img src="https://img.shields.io/badge/Join%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Join Discord (Max Members Reached)">
+    <a href="https://ko-fi.com/harryhopkinson">
+        <img src="https://img.shields.io/badge/Join%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord">
     </a>
+    <p>Join our Discord community by becoming a supporter on Ko-Fi and sending my your Discord Name.</p>
     <a href="https://ko-fi.com/harryhopkinson">
         <img src="https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white" alt="Support the Project">
     </a>
@@ -148,4 +149,4 @@ Windows Defender may flag it as a false positive due to the nature of input simu
 
 ---
 
-**Got questions?** Feel free to open an issue or join our [Discord](http://discord.gg/KhdXPqQxK8)!
+**Got questions?** Feel free to open an issue or join the [Discord](https://ko-fi.com/harryhopkinson)! once supporting the project on Ko-Fi.
