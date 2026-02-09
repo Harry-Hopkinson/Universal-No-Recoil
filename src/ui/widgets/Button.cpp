@@ -39,7 +39,7 @@ namespace Buttons
         ButtonsVector.push_back(
             { 5, startX, startY + 350, 160, 40, "Support the Project" });
         ButtonsVector.push_back(
-            { 6, startX + 180, startY + 350, 160, 40, "Join Discord (Access via Ko-Fi)" });
+            { 6, startX + 180, startY + 350, 160, 40, "Join Discord" });
 
         ButtonsVector.push_back(
             { 7, startX + 100, startY + 100, 140, 40, "Save Preset" });
