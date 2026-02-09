@@ -1,7 +1,7 @@
 #pragma once
 
-extern int WINDOW_WIDTH;
-extern int WINDOW_HEIGHT;
+constexpr int WINDOW_WIDTH = 1250;
+constexpr int WINDOW_HEIGHT = 1000;
 
 extern bool EnableRC;
 extern bool Running;
@@ -12,5 +12,3 @@ extern bool EnableController;
 extern bool UseToggleKey;
 
 extern const char* CurrentWeapon;
-
-extern bool IsResizing;

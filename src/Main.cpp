@@ -84,37 +84,6 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         }
         break;
 
-        case WM_ERASEBKGND:
-        {
-            return 1;
-        }
-        break;
-
-        case WM_SIZE:
-        {
-            if (wParam != SIZE_MINIMIZED)
-            {
-                WINDOW_WIDTH = LOWORD(lParam);
-                WINDOW_HEIGHT = HIWORD(lParam);
-
-                Buttons::CreateOperatorSelectionButtons();
-
-                InvalidateRect(hwnd, NULL, FALSE);
-            }
-            return 0;
-        }
-        break;
-
-        case WM_GETMINMAXINFO:
-        {
-            LPMINMAXINFO lpMMI = (LPMINMAXINFO)lParam;
-            lpMMI->ptMinTrackSize.x = 1200;
-            lpMMI->ptMinTrackSize.y = 950;
-
-            return 0;
-        }
-        break;
-
         case WM_LBUTTONDOWN:
         {
             int mouseX = GET_X_LPARAM(lParam);
@@ -164,68 +133,6 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         }
         break;
 
-        case WM_SETCURSOR:
-        {
-            int hitTest = LOWORD(lParam);
-            bool isMouseDown = (GetAsyncKeyState(VK_LBUTTON) & 0x8000) != 0;
-
-            if (isMouseDown)
-                return DefWindowProc(hwnd, uMsg, wParam, lParam);
-
-            static HCURSOR hArrow = LoadCursor(NULL, IDC_ARROW);
-            static HCURSOR hSizeNS = LoadCursor(NULL, IDC_SIZENS); // Vertical
-            static HCURSOR hSizeWE = LoadCursor(NULL, IDC_SIZEWE); // Horizontal
-            static HCURSOR hSizeNWSE = LoadCursor(
-                NULL, IDC_SIZENWSE); // Diagonal (\)
-            static HCURSOR hSizeNESW = LoadCursor(
-                NULL, IDC_SIZENESW); // Diagonal (/)
-
-            switch (hitTest)
-            {
-                case HTTOP:
-                case HTBOTTOM:
-                    SetCursor(hSizeNS);
-                    return TRUE;
-
-                case HTLEFT:
-                case HTRIGHT:
-                    SetCursor(hSizeWE);
-                    return TRUE;
-
-                case HTTOPLEFT:
-                case HTBOTTOMRIGHT:
-                    SetCursor(hSizeNWSE);
-                    return TRUE;
-
-                case HTTOPRIGHT:
-                case HTBOTTOMLEFT:
-                    SetCursor(hSizeNESW);
-                    return TRUE;
-
-                default:
-                    SetCursor(hArrow);
-                    return TRUE;
-            }
-        }
-        break;
-
-        case WM_ENTERSIZEMOVE:
-        {
-            IsResizing = true;
-
-            return 0;
-        }
-        break;
-
-        case WM_EXITSIZEMOVE:
-        {
-            IsResizing = false;
-
-            InvalidateRect(hwnd, NULL, FALSE);
-            return 0;
-        }
-        break;
-
         case WM_DESTROY:
         {
             Buttons::ClearButtons();
@@ -263,8 +170,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int nCmdShow)
 
     HWND hwnd = CreateWindowEx(
         0, wc.lpszClassName, "R6 No Recoil",
-        WS_OVERLAPPEDWINDOW & ~WS_MAXIMIZEBOX, CW_USEDEFAULT, CW_USEDEFAULT,
-        WINDOW_WIDTH, WINDOW_HEIGHT, nullptr, nullptr, hInstance, nullptr);
+        (WS_OVERLAPPEDWINDOW & ~(WS_MAXIMIZEBOX | WS_THICKFRAME)),
+        CW_USEDEFAULT, CW_USEDEFAULT, WINDOW_WIDTH, WINDOW_HEIGHT, nullptr,
+        nullptr, hInstance, nullptr);
 
     if (!hwnd)
         return 0;
