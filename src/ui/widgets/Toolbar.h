@@ -5,6 +5,6 @@
 namespace Toolbar
 {
 
-    void DrawToolBar(HDC memDC, int right, int bottom);
+    void DrawToolBar(HDC memDC, int right);
 
 } // namespace Toolbar

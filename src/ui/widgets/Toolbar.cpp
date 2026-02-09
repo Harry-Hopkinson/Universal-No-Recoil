@@ -12,7 +12,7 @@ inline constexpr float CURRENT_VERSION = 3.1f;
 namespace Toolbar
 {
 
-    void DrawToolBar(HDC memDC, int right, int bottom)
+    void DrawToolBar(HDC memDC, int right)
     {
         HFONT oldFont = (HFONT)SelectObject(memDC, Font::GetDescFont());
         SetTextColor(memDC, TextColour);
@@ -81,17 +81,6 @@ namespace Toolbar
             memDC, versionText, -1, &textRect,
             DT_RIGHT | DT_VCENTER | DT_SINGLELINE);
 
-        // Recoil
-        RECT verticalLabelRect = { right - 340, (bottom - 90) / 2 - 140,
-                                   right - 150, (bottom - 90) / 2 - 120 };
-        RECT horizontalLabelRect = { right - 355, (bottom - 90) / 2 - 90,
-                                     right - 150, (bottom - 90) / 2 - 70 };
-        DrawText(
-            memDC, "Vertical Recoil:", -1, &verticalLabelRect,
-            DT_LEFT | DT_SINGLELINE | DT_VCENTER);
-        DrawText(
-            memDC, "Horizontal Recoil:", -1, &horizontalLabelRect,
-            DT_LEFT | DT_SINGLELINE | DT_VCENTER);
 
         SelectObject(memDC, oldFont);
         SelectObject(memDC, oldPen);

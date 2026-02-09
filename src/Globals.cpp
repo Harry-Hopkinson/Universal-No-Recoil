@@ -1,7 +1,7 @@
 #include "Globals.h"
 
-int WINDOW_WIDTH = 1200;
-int WINDOW_HEIGHT = 975;
+int WINDOW_WIDTH = 1250;
+int WINDOW_HEIGHT = 1000;
 
 bool EnableRC = true;
 bool Running = true;

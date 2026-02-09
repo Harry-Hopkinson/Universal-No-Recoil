@@ -58,13 +58,25 @@ namespace Drawing
             Bitmap::DrawBitmap(memDC, bitmaps[i], x, y, cellSize, cellSize, 45);
         }
 
-        Toolbar::DrawToolBar(memDC, right, bottom);
+        Toolbar::DrawToolBar(memDC, right);
 
         Sliders::DrawSliders(memDC);
 
         // Draw all buttons
         for (const auto& btn : Buttons::GetButtons())
             DrawButton(memDC, btn);
+
+        // Draw recoil text
+        RECT verticalLabelRect = { right - 340, (bottom - 90) / 2 - 140,
+                                   right - 150, (bottom - 90) / 2 - 120 };
+        RECT horizontalLabelRect = { right - 355, (bottom - 90) / 2 - 90,
+                                     right - 150, (bottom - 90) / 2 - 70 };
+        DrawText(
+            memDC, "Vertical Recoil:", -1, &verticalLabelRect,
+            DT_LEFT | DT_SINGLELINE | DT_VCENTER);
+        DrawText(
+            memDC, "Horizontal Recoil:", -1, &horizontalLabelRect,
+            DT_LEFT | DT_SINGLELINE | DT_VCENTER);
 
         // Draw vertical line
         int lineX = static_cast<int>(right * 0.66f);

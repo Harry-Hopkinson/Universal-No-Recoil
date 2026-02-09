@@ -149,10 +149,8 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         case WM_MOUSEMOVE:
         {
             int mouseX = GET_X_LPARAM(lParam);
-            int mouseY = GET_Y_LPARAM(lParam);
-            bool leftDown = (wParam & MK_LBUTTON) != 0;
 
-            if (Sliders::OnMouseMove(hwnd, mouseX, mouseY, leftDown))
+            if (Sliders::OnMouseMove(hwnd, mouseX))
                 break;
         }
         break;
@@ -160,9 +158,8 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         case WM_LBUTTONUP:
         {
             int mouseX = GET_X_LPARAM(lParam);
-            int mouseY = GET_Y_LPARAM(lParam);
 
-            if (Sliders::OnLButtonUp(hwnd, mouseX, mouseY))
+            if (Sliders::OnLButtonUp(hwnd, mouseX))
                 break;
         }
         break;

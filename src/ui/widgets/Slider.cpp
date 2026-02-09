@@ -77,8 +77,7 @@ namespace
         return (mx >= r.left && mx <= r.right && my >= r.top && my <= r.bottom);
     }
 
-    static void ApplySliderValueToRecoilAndInvalidate(
-        HWND hwnd, const Sliders::Slider& s)
+    static void ApplySliderValue(HWND hwnd, const Sliders::Slider& s)
     {
         if (s.id == 100)
         {
@@ -102,7 +101,7 @@ namespace Sliders
         SlidersVector.clear();
 
         int startX = WINDOW_WIDTH - 200 - (350 / 2);
-        int startY = (WINDOW_HEIGHT - 90) / 2;
+        int startY = (WINDOW_HEIGHT - 75) / 2;
 
         Slider vertical;
         vertical.id = 100;
@@ -122,8 +121,8 @@ namespace Sliders
         horizontal.y = startY - 120;
         horizontal.width = 200;
         horizontal.height = 24;
-        horizontal.min = -10.0f;
-        horizontal.max = 10.0f;
+        horizontal.min = -5.0f;
+        horizontal.max = 5.0f;
         horizontal.value = CurrentRecoil.Horizontal;
         horizontal.step = 0.1f;
         SlidersVector.push_back(horizontal);
@@ -156,10 +155,16 @@ namespace Sliders
             int ty = s.y + s.height / 2;
             RECT thumbRect = { tx - THUMB_WIDTH / 2, ty - THUMB_WIDTH / 2,
                                tx + THUMB_WIDTH / 2, ty + THUMB_WIDTH / 2 };
-            SelectObject(memDC, thumbBrush);
+
+            HGDIOBJ prevBrush = SelectObject(memDC, thumbBrush);
+            HGDIOBJ prevPen = SelectObject(memDC, GetStockObject(NULL_PEN));
+
             Ellipse(
                 memDC, thumbRect.left, thumbRect.top, thumbRect.right,
                 thumbRect.bottom);
+
+            SelectObject(memDC, prevBrush);
+            SelectObject(memDC, prevPen);
 
             char buf[16];
             sprintf_s(buf, "%.2f", s.value);
@@ -186,7 +191,7 @@ namespace Sliders
                 && mouseY <= r.bottom)
             {
                 s.value = ValueFromMouse(s, mouseX);
-                ApplySliderValueToRecoilAndInvalidate(hwnd, s);
+                ApplySliderValue(hwnd, s);
 
                 DraggingID = s.id;
                 SetCapture(hwnd);
@@ -196,7 +201,7 @@ namespace Sliders
             if (IsPointInThumb(s, mouseX, mouseY))
             {
                 s.value = ValueFromMouse(s, mouseX);
-                ApplySliderValueToRecoilAndInvalidate(hwnd, s);
+                ApplySliderValue(hwnd, s);
 
                 DraggingID = s.id;
                 SetCapture(hwnd);
@@ -206,7 +211,7 @@ namespace Sliders
         return false;
     }
 
-    bool OnMouseMove(HWND hwnd, int mouseX, int mouseY, bool leftButtonDown)
+    bool OnMouseMove(HWND hwnd, int mouseX)
     {
         if (DraggingID == -1)
             return false;
@@ -216,12 +221,12 @@ namespace Sliders
             return false;
 
         s->value = ValueFromMouse(*s, mouseX);
-        ApplySliderValueToRecoilAndInvalidate(hwnd, *s);
+        ApplySliderValue(hwnd, *s);
 
         return true;
     }
 
-    bool OnLButtonUp(HWND hwnd, int mouseX, int mouseY)
+    bool OnLButtonUp(HWND hwnd, int mouseX)
     {
         if (DraggingID == -1)
             return false;
@@ -230,7 +235,7 @@ namespace Sliders
         if (s)
         {
             s->value = ValueFromMouse(*s, mouseX);
-            ApplySliderValueToRecoilAndInvalidate(hwnd, *s);
+            ApplySliderValue(hwnd, *s);
 
             Files::SaveConfig();
         }
@@ -239,6 +244,21 @@ namespace Sliders
         ReleaseCapture();
 
         return true;
+    }
+
+    void SetSliderValue()
+    {
+        for (auto& s : SlidersVector)
+        {
+            if (s.id == 100)
+            {
+                s.value = CurrentRecoil.Vertical;
+            }
+            else if (s.id == 101)
+            {
+                s.value = CurrentRecoil.Horizontal;
+            }
+        }
     }
 
 } // namespace Sliders

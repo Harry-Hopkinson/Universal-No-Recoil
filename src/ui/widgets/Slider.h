@@ -32,7 +32,9 @@ namespace Sliders
     void DrawSliders(HDC memDC);
 
     bool OnLButtonDown(HWND hwnd, int mouseX, int mouseY);
-    bool OnMouseMove(HWND hwnd, int mouseX, int mouseY, bool leftButtonDown);
-    bool OnLButtonUp(HWND hwnd, int mouseX, int mouseY);
+    bool OnMouseMove(HWND hwnd, int mouseX);
+    bool OnLButtonUp(HWND hwnd, int mouseX);
+
+    void SetSliderValue();
 
 } // namespace Sliders

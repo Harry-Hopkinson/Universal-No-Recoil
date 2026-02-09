@@ -9,6 +9,8 @@
 #include "../recoil/Recoil.h"
 #include "../scenes/Scenes.h"
 #include "../ui/widgets/Button.h"
+#include "../ui/widgets/Slider.h"
+
 #include "../utils/LayoutUtils.h"
 #include "../utils/WindowUtils.h"
 
@@ -59,6 +61,8 @@ namespace ClickDetection
 
             CurrentRecoil = Files::GetWeaponData(CurrentWeapon, presetIndex);
             Files::SaveConfig();
+
+            Sliders::SetSliderValue();
 
             Scenes::ChangeCurrentScene(SceneType::OperatorSelection);
             Buttons::CreateOperatorSelectionButtons();
