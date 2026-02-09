@@ -7,8 +7,8 @@
 
 #include <cstdio>
 
-#define min(a, b) ((a) < (b) ? (a) : (b))
-#define max(a, b) ((a) > (b) ? (a) : (b))
+#define Min(a, b) ((a) < (b) ? (a) : (b))
+#define Max(a, b) ((a) > (b) ? (a) : (b))
 
 #define round(x) ((x) < 0 ? (int)((x) - 0.5f) : (int)((x) + 0.5f))
 
@@ -23,7 +23,7 @@ namespace
 
     static float Clamp(float v, float a, float b)
     {
-        return min(b, max(a, v));
+        return Min(b, Max(a, v));
     }
     static float RoundToStep(float value, float step)
     {
