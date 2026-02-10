@@ -1,8 +1,12 @@
 #pragma once
 
-#include "Structs.h"
-
 #include <vector>
+
+struct WeaponRecoil
+{
+    float Vertical;
+    float Horizontal;
+};
 
 extern WeaponRecoil CurrentRecoil;
 

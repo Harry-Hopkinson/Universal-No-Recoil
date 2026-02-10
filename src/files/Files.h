@@ -1,7 +1,5 @@
 #pragma once
 
-#include "../recoil/Structs.h"
-
 namespace Files
 {
 
