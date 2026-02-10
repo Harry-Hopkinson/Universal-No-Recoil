@@ -1,0 +1,32 @@
+name: CI
+
+on:
+    push:
+    pull_request:
+
+jobs:
+    application:
+        runs-on: windows-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v6
+
+            - name: Build the Project with CMake
+              run: |
+                  cmake -S . -B build -G "Visual Studio 17 2022" -A x64
+                  cmake --build build --config Release --target UniversalNoRecoil
+
+            - name: Strip symbols from executable
+              run: strip build/Release/UniversalNoRecoil.exe
+
+            - name: Prepare release folder
+              run: |
+                  mkdir UniversalNoRecoil
+                  copy build\Config.toml UniversalNoRecoil\
+                  copy build\Release\UniversalNoRecoil.exe UniversalNoRecoil\
+
+            - name: Upload artifact
+              uses: actions/upload-artifact@v6
+              with:
+                  name: UniversalNoRecoil
+                  path: UniversalNoRecoil
