@@ -50,10 +50,6 @@ DerivePointerAlignment: false
 DisableFormat: false
 ExperimentalAutoDetectBinPacking: false
 FixNamespaceComments: true
-ForEachMacros:
-    - FOR_ALL_PEEPS
-    - FOR_ALL_GUESTS
-    - FOR_ALL_STAFF
 IncludeBlocks: "Regroup"
 IncludeCategories:
     - Regex: '^"'
