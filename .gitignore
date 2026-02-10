@@ -31,6 +31,3 @@
 *.out
 *.app
 build/
-
-.xmake
-.DS_Store
