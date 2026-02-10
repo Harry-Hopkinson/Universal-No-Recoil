@@ -75,16 +75,4 @@ namespace FileUtils
         CloseHandle(file);
     }
 
-    /**
-     * @brief Gets the directory of the current executable
-     * @return Pointer to static buffer containing executable directory path
-     */
-    inline const char* GetExecutableDir()
-    {
-        static char exePath[MAX_PATH] = {};
-        if (exePath[0] == '\0')
-            GetModuleFileNameA(NULL, exePath, MAX_PATH);
-        return exePath;
-    }
-
 } // namespace FileUtils
