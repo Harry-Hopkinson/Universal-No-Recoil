@@ -6,14 +6,14 @@ on:
 
 jobs:
     application:
-        runs-on: windows-latest
+        runs-on: windows-2025-vs2026
         steps:
             - name: Checkout code
               uses: actions/checkout@v6
 
             - name: Build the Project with CMake
               run: |
-                  cmake -S . -B build -G "Visual Studio 17 2022" -A x64
+                  cmake -S . -B build -G "Visual Studio 18 2026" -A x64
                   cmake --build build --config Release --target UNRC
 
             - name: Strip symbols from executable
