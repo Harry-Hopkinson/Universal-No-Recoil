@@ -4,6 +4,7 @@
 
 #include "../Globals.h"
 
+#include "../core/Keys.h"
 #include "../files/Files.h"
 
 #include "../ui/widgets/Button.h"
@@ -23,7 +24,7 @@ namespace ButtonHandler
 
     void HandleToggleKey(HWND hwnd)
     {
-        UseToggleKey = !UseToggleKey;
+        ToggleKeyEnabled = !ToggleKeyEnabled;
         Files::SaveConfig();
 
         WindowUtils::InvalidateWindow(hwnd);
@@ -40,6 +41,14 @@ namespace ButtonHandler
         Files::SaveConfig();
 
         Buttons::CreateOperatorSelectionButtons();
+        WindowUtils::InvalidateWindow(hwnd);
+    }
+
+    void HandleRandomisedRecoil(HWND hwnd)
+    {
+        RandomRecoil = !RandomRecoil;
+        Files::SaveConfig();
+
         WindowUtils::InvalidateWindow(hwnd);
     }
 

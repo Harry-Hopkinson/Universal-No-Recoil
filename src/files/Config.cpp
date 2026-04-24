@@ -20,25 +20,15 @@ namespace Files
 
         // [General]
         len += sprintf_s(buffer + len, bufferSize - len, "[General]\r\n");
-        len += sprintf_s(
-            buffer + len, bufferSize - len, "Enabled = %s\r\n",
-            EnableRC ? "true" : "false");
-        len += sprintf_s(
-            buffer + len, bufferSize - len, "VerticalRecoil = %.2f\r\n",
-            CurrentRecoil.Vertical);
-        len += sprintf_s(
-            buffer + len, bufferSize - len, "HorizontalRecoil = %.2f\r\n",
-            CurrentRecoil.Horizontal);
+        len += sprintf_s(buffer + len, bufferSize - len, "Enabled = %s\r\n", EnableRC ? "true" : "false");
+        len += sprintf_s(buffer + len, bufferSize - len, "VerticalRecoil = %.2f\r\n", CurrentRecoil.Vertical);
+        len += sprintf_s(buffer + len, bufferSize - len, "HorizontalRecoil = %.2f\r\n", CurrentRecoil.Horizontal);
         len += sprintf_s(buffer + len, bufferSize - len, "\r\n");
 
         // [Controller]
         len += sprintf_s(buffer + len, bufferSize - len, "[Controller]\r\n");
-        len += sprintf_s(
-            buffer + len, bufferSize - len, "Enabled = %s\r\n",
-            EnableController ? "true" : "false");
-        len += sprintf_s(
-            buffer + len, bufferSize - len, "Multiplier = %d\r\n",
-            ControllerMultiplier);
+        len += sprintf_s(buffer + len, bufferSize - len, "Enabled = %s\r\n", EnableController ? "true" : "false");
+        len += sprintf_s(buffer + len, bufferSize - len, "Multiplier = %d\r\n", ControllerMultiplier);
         len += sprintf_s(buffer + len, bufferSize - len, "\r\n");
 
         // [Keys]
@@ -48,37 +38,26 @@ namespace Files
             "# Use "
             "https://learn.microsoft.com/en-us/windows/win32/inputdev/"
             "virtual-key-codes\r\n");
+        len += sprintf_s(buffer + len, bufferSize - len, "# And then convert the key code to decimal\r\n");
+        len += sprintf_s(buffer + len, bufferSize - len, "# Toggle Key (e.g. 20 = CAPS LOCK)\r\n");
+        len += sprintf_s(buffer + len, bufferSize - len, "ToggleKey = %d\r\n", ToggleKey);
         len += sprintf_s(
-            buffer + len, bufferSize - len,
-            "# And then convert the key code to decimal\r\n");
-        len += sprintf_s(
-            buffer + len, bufferSize - len,
-            "# Toggle Key (e.g. 20 = CAPS LOCK)\r\n");
-        len += sprintf_s(
-            buffer + len, bufferSize - len, "ToggleKey = %d\r\n", ToggleKey);
-        len += sprintf_s(
-            buffer + len, bufferSize - len, "ToggleKeyEnabled = %s\r\n",
-            UseToggleKey ? "true" : "false");
+            buffer + len, bufferSize - len, "ToggleKeyEnabled = %s\r\n", ToggleKeyEnabled ? "true" : "false");
         len += sprintf_s(buffer + len, bufferSize - len, "\r\n");
 
         len += sprintf_s(buffer + len, bufferSize - len, "[Theme]\r\n");
         len += sprintf_s(
-            buffer + len, bufferSize - len,
-            "BackgroundColour = RGB(%d, %d, %d)\r\n",
-            GetRValue(BackgroundColour), GetGValue(BackgroundColour),
-            GetBValue(BackgroundColour));
+            buffer + len, bufferSize - len, "BackgroundColour = RGB(%d, %d, %d)\r\n", GetRValue(BackgroundColour),
+            GetGValue(BackgroundColour), GetBValue(BackgroundColour));
         len += sprintf_s(
-            buffer + len, bufferSize - len, "TextColour = RGB(%d, %d, %d)\r\n",
-            GetRValue(TextColour), GetGValue(TextColour),
-            GetBValue(TextColour));
+            buffer + len, bufferSize - len, "TextColour = RGB(%d, %d, %d)\r\n", GetRValue(TextColour),
+            GetGValue(TextColour), GetBValue(TextColour));
         len += sprintf_s(
-            buffer + len, bufferSize - len,
-            "ButtonColour = RGB(%d, %d, %d)\r\n", GetRValue(ButtonColour),
+            buffer + len, bufferSize - len, "ButtonColour = RGB(%d, %d, %d)\r\n", GetRValue(ButtonColour),
             GetGValue(ButtonColour), GetBValue(ButtonColour));
         len += sprintf_s(
-            buffer + len, bufferSize - len, "LineColour = RGB(%d, %d, %d)\r\n",
-            GetRValue(LineColour), GetGValue(LineColour),
-            GetBValue(LineColour));
+            buffer + len, bufferSize - len, "LineColour = RGB(%d, %d, %d)\r\n", GetRValue(LineColour),
+            GetGValue(LineColour), GetBValue(LineColour));
 
         FileUtils::WriteFileFromMemory("Config.toml", buffer, len);
     }
@@ -108,8 +87,7 @@ namespace Files
             if (line[0] == '[')
             {
                 char* end = strchr(line, ']');
-                if (end
-                    && static_cast<size_t>(end - line - 1) < sizeof(section))
+                if (end && static_cast<size_t>(end - line - 1) < sizeof(section))
                 {
                     strncpy(section, line + 1, end - line - 1);
                     section[end - line - 1] = '\0';
@@ -132,9 +110,7 @@ namespace Files
             if (StringUtils::StringEquals(section, "General"))
             {
                 if (StringUtils::StringEquals(key, "Enabled"))
-                    EnableRC
-                        = (StringUtils::StringEquals(value, "true")
-                           || StringUtils::StringEquals(value, "1"));
+                    EnableRC = (StringUtils::StringEquals(value, "true") || StringUtils::StringEquals(value, "1"));
                 else if (StringUtils::StringEquals(key, "VerticalRecoil"))
                     CurrentRecoil.Vertical = static_cast<float>(atof(value));
                 else if (StringUtils::StringEquals(key, "HorizontalRecoil"))
@@ -144,8 +120,7 @@ namespace Files
             {
                 if (StringUtils::StringEquals(key, "Enabled"))
                     EnableController
-                        = (StringUtils::StringEquals(value, "true")
-                           || StringUtils::StringEquals(value, "1"));
+                        = (StringUtils::StringEquals(value, "true") || StringUtils::StringEquals(value, "1"));
                 else if (StringUtils::StringEquals(key, "Multiplier"))
                     ControllerMultiplier = atoi(value);
             }
@@ -154,9 +129,8 @@ namespace Files
                 if (StringUtils::StringEquals(key, "ToggleKey"))
                     ToggleKey = atoi(value);
                 else if (StringUtils::StringEquals(key, "ToggleKeyEnabled"))
-                    UseToggleKey
-                        = (StringUtils::StringEquals(value, "true")
-                           || StringUtils::StringEquals(value, "1"));
+                    ToggleKeyEnabled
+                        = (StringUtils::StringEquals(value, "true") || StringUtils::StringEquals(value, "1"));
             }
             else if (StringUtils::StringEquals(section, "Theme"))
             {

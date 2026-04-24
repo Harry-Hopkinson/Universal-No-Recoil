@@ -9,4 +9,4 @@ extern bool IsAttackerView;
 
 extern bool EnableController;
 
-extern bool UseToggleKey;
+extern bool RandomRecoil;

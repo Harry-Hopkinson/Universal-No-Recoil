@@ -10,8 +10,8 @@
 
 inline constexpr int FIRE_DELAY_MS = 5;
 
-inline constexpr int TOGGLE_DELAY_MS = 300;
-inline constexpr int POLL_INTERVAL_MS = 50;
+inline constexpr int TOGGLE_DELAY_MS = 100;
+inline constexpr int POLL_INTERVAL_MS = 10;
 
 inline constexpr const char* WINDOW_TITLE = "Universal No Recoil";
 
@@ -20,6 +20,7 @@ static HWND GetWindowHandle()
     static HWND hwnd = nullptr;
     if (!hwnd || !IsWindow(hwnd))
         hwnd = FindWindow(NULL, WINDOW_TITLE);
+
     return hwnd;
 }
 
@@ -31,16 +32,13 @@ DWORD WINAPI WorkerThreadProc(LPVOID)
     {
         ULONGLONG now = GetTickCount64();
 
-        const bool controllerConnected = EnableController
-            && Inputs::IsControllerConnected();
+        const bool controllerConnected = EnableController && Inputs::IsControllerConnected();
 
         const bool isADS = Inputs::IsMouseADS()
-            || (controllerConnected
-                && Inputs::IsControllerADS(Inputs::GetControllerState()));
+            || (controllerConnected && Inputs::IsControllerADS(Inputs::GetControllerState()));
 
         const bool firingMouse = Inputs::IsMouseFiring();
-        const bool firingController = controllerConnected
-            && Inputs::IsControllerFiring(Inputs::GetControllerState());
+        const bool firingController = controllerConnected && Inputs::IsControllerFiring(Inputs::GetControllerState());
 
         if (EnableRC && isADS && (firingMouse || firingController))
         {
@@ -68,7 +66,7 @@ DWORD WINAPI WorkerThreadProc(LPVOID)
             continue;
         }
 
-        if (UseToggleKey && (GetAsyncKeyState(ToggleKey) & 0x8000))
+        if (ToggleKeyEnabled && (GetAsyncKeyState(ToggleKey) & 0x8000))
         {
             EnableRC = !EnableRC;
             Files::SaveConfig();

@@ -6,4 +6,4 @@ bool IsAttackerView = true;
 
 bool EnableController = false;
 
-bool UseToggleKey = false;
+bool RandomRecoil = false;

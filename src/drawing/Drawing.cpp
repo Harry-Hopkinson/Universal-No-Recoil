@@ -15,8 +15,7 @@ namespace Drawing
         HGDIOBJ oldBrush = SelectObject(memDC, bgBrush);
         HGDIOBJ oldPen = SelectObject(memDC, pen);
 
-        RoundRect(
-            memDC, btn.x, btn.y, btn.x + btn.width, btn.y + btn.height, 6, 6);
+        RoundRect(memDC, btn.x, btn.y, btn.x + btn.width, btn.y + btn.height, 6, 6);
 
         SelectObject(memDC, oldBrush);
         SelectObject(memDC, oldPen);
@@ -26,9 +25,7 @@ namespace Drawing
         SetTextColor(memDC, TextColour);
         SetBkMode(memDC, TRANSPARENT);
         RECT textRect = btn.GetRect();
-        DrawText(
-            memDC, btn.text, -1, &textRect,
-            DT_CENTER | DT_VCENTER | DT_SINGLELINE);
+        DrawText(memDC, btn.text, -1, &textRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
     }
 
     void Draw(HDC memDC, int right, int bottom)
@@ -45,14 +42,12 @@ namespace Drawing
         const int panelLeft = 20;
         const int panelWidth = 360;
         const int panelTop = (bottom - 160) / 2;
-        RECT panelRect = { panelLeft, panelTop, panelLeft + panelWidth,
-                           panelTop + 160 };
+        RECT panelRect = { panelLeft, panelTop, panelLeft + panelWidth, panelTop + 200 };
 
         HBRUSH panelBrush = CreateSolidBrush(RGB(32, 32, 32));
         HGDIOBJ oldBrush = SelectObject(memDC, panelBrush);
-        Rectangle(
-            memDC, panelRect.left, panelRect.top, panelRect.right,
-            panelRect.bottom);
+
+        Rectangle(memDC, panelRect.left, panelRect.top, panelRect.right, panelRect.bottom);
         SelectObject(memDC, oldBrush);
         DeleteObject(panelBrush);
 
@@ -67,16 +62,10 @@ namespace Drawing
         // Labels to the right of the separator, before sliders
         int labelLeft = lineX + 12;
         int labelRight = labelLeft + 180;
-        RECT verticalLabelRect = { labelLeft, panelTop + 10, labelRight,
-                                   panelTop + 30 };
-        RECT horizontalLabelRect = { labelLeft, panelTop + 40, labelRight,
-                                     panelTop + 60 };
-        DrawText(
-            memDC, "Vertical Recoil:", -1, &verticalLabelRect,
-            DT_LEFT | DT_SINGLELINE | DT_VCENTER);
-        DrawText(
-            memDC, "Horizontal Recoil:", -1, &horizontalLabelRect,
-            DT_LEFT | DT_SINGLELINE | DT_VCENTER);
+        RECT verticalLabelRect = { labelLeft, panelTop + 10, labelRight, panelTop + 30 };
+        RECT horizontalLabelRect = { labelLeft, panelTop + 40, labelRight, panelTop + 60 };
+        DrawText(memDC, "Vertical Recoil:", -1, &verticalLabelRect, DT_LEFT | DT_SINGLELINE | DT_VCENTER);
+        DrawText(memDC, "Horizontal Recoil:", -1, &horizontalLabelRect, DT_LEFT | DT_SINGLELINE | DT_VCENTER);
 
         Sliders::DrawSliders(memDC);
 

@@ -2,6 +2,9 @@
 
 #include <windows.h>
 
+#include "../Globals.h"
+#include "../recoil/Recoil.h"
+
 namespace Inputs
 {
 
@@ -25,6 +28,14 @@ namespace Inputs
 
         LONG moveX = static_cast<LONG>(accumX);
         LONG moveY = static_cast<LONG>(accumY);
+
+        if (RandomRecoil)
+        {
+            float randomX = (static_cast<float>(rand()) / RAND_MAX) * 2.0f - 1.0f;
+            float randomY = (static_cast<float>(rand()) / RAND_MAX) * 2.0f - 1.0f;
+            moveX += randomX * CurrentRecoil.Horizontal;
+            moveY += randomY * CurrentRecoil.Vertical;
+        }
 
         if (moveX != 0 || moveY != 0)
         {

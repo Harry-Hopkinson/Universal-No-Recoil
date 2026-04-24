@@ -14,7 +14,6 @@ Multiplier = 10
 ToggleKey = 20
 ToggleKeyEnabled = false
 
-
 [Theme]
 BackgroundColour = RGB(30, 30, 30)
 TextColour = RGB(230, 230, 230)

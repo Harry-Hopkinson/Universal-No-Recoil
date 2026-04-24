@@ -27,6 +27,9 @@ namespace Detection
                     case 4:
                         ButtonHandler::HandleController(hwnd);
                         break;
+                    case 5:
+                        ButtonHandler::HandleRandomisedRecoil(hwnd);
+                        break;
 
                     default:
                         break;
