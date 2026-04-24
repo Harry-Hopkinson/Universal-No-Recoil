@@ -28,7 +28,7 @@ namespace Files
         // [Controller]
         len += sprintf_s(buffer + len, bufferSize - len, "[Controller]\r\n");
         len += sprintf_s(buffer + len, bufferSize - len, "Enabled = %s\r\n", EnableController ? "true" : "false");
-        len += sprintf_s(buffer + len, bufferSize - len, "Multiplier = %d\r\n", ControllerMultiplier);
+        len += sprintf_s(buffer + len, bufferSize - len, "Multiplier = %.2f\r\n", ControllerMultiplier);
         len += sprintf_s(buffer + len, bufferSize - len, "\r\n");
 
         // [Keys]
@@ -122,7 +122,7 @@ namespace Files
                     EnableController
                         = (StringUtils::StringEquals(value, "true") || StringUtils::StringEquals(value, "1"));
                 else if (StringUtils::StringEquals(key, "Multiplier"))
-                    ControllerMultiplier = atoi(value);
+                    ControllerMultiplier = static_cast<float>(atoi(value));
             }
             else if (StringUtils::StringEquals(section, "Keys"))
             {

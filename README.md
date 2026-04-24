@@ -54,7 +54,7 @@ The app automatically creates a `Config.toml` file on first run. You can manuall
 ```ini
 [General]
 Enabled = true
-VerticalRecoil = 3.00
+VerticalRecoil = 5.00
 HorizontalRecoil = 0.00
 
 [Controller]

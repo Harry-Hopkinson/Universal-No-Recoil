@@ -53,7 +53,7 @@ DWORD WINAPI WorkerThreadProc(LPVOID)
                     float lookX, lookY;
                     Inputs::GetControllerStickInput(state, lookX, lookY);
 
-                    auto [rx, ry] = CalculateRecoil(moveX, moveY, lookX, lookY);
+                    auto [rx, ry] = CalculateControllerRecoil(moveX, moveY, lookX, lookY);
                     moveX = rx;
                     moveY = ry;
                 }

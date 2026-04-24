@@ -10,6 +10,6 @@ struct WeaponRecoil
 
 extern WeaponRecoil CurrentRecoil;
 
-extern int ControllerMultiplier;
+extern float ControllerMultiplier;
 
-std::pair<float, float> CalculateRecoil(float baseX, float baseY, float lookX, float lookY);
+std::pair<float, float> CalculateControllerRecoil(float baseX, float baseY, float lookX, float lookY);

@@ -1,12 +1,25 @@
 #include "Recoil.h"
 
-WeaponRecoil CurrentRecoil = { 3.00f, 0.00f };
+#include "../Globals.h"
+#include "../core/Random.h"
 
-int ControllerMultiplier = 10;
+WeaponRecoil CurrentRecoil = { 5.00f, 0.00f };
 
-std::pair<float, float> CalculateRecoil(float baseX, float baseY, float lookX, float lookY)
+float ControllerMultiplier = 10.0f;
+
+std::pair<float, float> CalculateControllerRecoil(float baseX, float baseY, float lookX, float lookY)
 {
-    float adjustedX = baseX + (lookX * ControllerMultiplier);
-    float adjustedY = baseY + (-lookY * ControllerMultiplier);
+    float randomX = 0.0f;
+    float randomY = 0.0f;
+
+    if (RandomRecoil)
+    {
+        randomX = GetRandomFloat(-CurrentRecoil.Horizontal, CurrentRecoil.Horizontal);
+        randomY = GetRandomFloat(-CurrentRecoil.Vertical, CurrentRecoil.Vertical);
+    }
+
+    float adjustedX = baseX + (lookX * ControllerMultiplier) + randomX;
+    float adjustedY = baseY + (-lookY * ControllerMultiplier) + randomY;
+
     return { adjustedX, adjustedY };
 }

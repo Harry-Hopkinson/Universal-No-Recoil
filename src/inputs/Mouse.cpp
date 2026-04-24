@@ -26,16 +26,16 @@ namespace Inputs
         accumX += dx;
         accumY += dy;
 
-        LONG moveX = static_cast<LONG>(accumX);
-        LONG moveY = static_cast<LONG>(accumY);
-
         if (RandomRecoil)
         {
             float randomX = (static_cast<float>(rand()) / RAND_MAX) * 2.0f - 1.0f;
             float randomY = (static_cast<float>(rand()) / RAND_MAX) * 2.0f - 1.0f;
-            moveX += randomX * CurrentRecoil.Horizontal;
-            moveY += randomY * CurrentRecoil.Vertical;
+            accumX += randomX * CurrentRecoil.Horizontal;
+            accumY += randomY * CurrentRecoil.Vertical;
         }
+
+        LONG moveX = static_cast<LONG>(accumX);
+        LONG moveY = static_cast<LONG>(accumY);
 
         if (moveX != 0 || moveY != 0)
         {
