@@ -125,7 +125,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int nCmdShow)
 {
     WNDCLASS wc = {};
     wc.style = CS_HREDRAW | CS_VREDRAW;
-    wc.lpszClassName = "UniversalNoRecoil";
+    wc.lpszClassName = "UNRC";
     wc.hInstance = hInstance;
     wc.lpfnWndProc = WindowProc;
     wc.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON1));

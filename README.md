@@ -32,7 +32,7 @@ Most recoil control tools are packed with features you'll never use, slowing dow
 ## How to Use
 
 1. **Download** `UniversalNoRecoil.zip` from the [Github Releases](https://github.com/Harry-Hopkinson/Universal-No-Recoil/releases/latest) and extract the zip folder.
-2. **Run the Program** (double-click `UniversalNoRecoil.exe`). No installation needed.
+2. **Run the Program** (double-click `UNRC.exe`). No installation needed.
 3. **Select your recoil compensation strength** by using the sliders.
 4. **Use the Toggle Recoil Button** to enable/disable the recoil control.
 5. **Use CapsLock** (default) to toggle on/off during gameplay. Enable by clicking on the Toggle Key button.
@@ -93,7 +93,6 @@ LineColour = RGB(180, 180, 180)
 
 - **ToggleKey:** The key code for toggling recoil adjustment.
 - **ToggleKeyEnabled:** Enable or disable recoil adjustment with a toggle key.
-
 
 #### [Theme]
 
