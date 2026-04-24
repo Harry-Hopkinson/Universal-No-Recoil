@@ -72,8 +72,7 @@ namespace
         int tx = ThumbXForValue(s);
         int ty = s.y + s.height / 2;
 
-        RECT r{ tx - THUMB_WIDTH, ty - THUMB_WIDTH, tx + THUMB_WIDTH,
-                ty + THUMB_WIDTH };
+        RECT r{ tx - THUMB_WIDTH, ty - THUMB_WIDTH, tx + THUMB_WIDTH, ty + THUMB_WIDTH };
         return (mx >= r.left && mx <= r.right && my >= r.top && my <= r.bottom);
     }
 
@@ -148,32 +147,26 @@ namespace Sliders
 
         for (const auto& s : SlidersVector)
         {
-            RECT trackRect = { s.x, s.y + (s.height - TRACK_HEIGHT) / 2,
-                               s.x + s.width,
+            RECT trackRect = { s.x, s.y + (s.height - TRACK_HEIGHT) / 2, s.x + s.width,
                                s.y + (s.height + TRACK_HEIGHT) / 2 };
             FillRect(memDC, &trackRect, trackBrush);
 
             int tx = ThumbXForValue(s);
             int ty = s.y + s.height / 2;
-            RECT thumbRect = { tx - THUMB_WIDTH / 2, ty - THUMB_WIDTH / 2,
-                               tx + THUMB_WIDTH / 2, ty + THUMB_WIDTH / 2 };
+            RECT thumbRect = { tx - THUMB_WIDTH / 2, ty - THUMB_WIDTH / 2, tx + THUMB_WIDTH / 2, ty + THUMB_WIDTH / 2 };
 
             HGDIOBJ prevBrush = SelectObject(memDC, thumbBrush);
             HGDIOBJ prevPen = SelectObject(memDC, GetStockObject(NULL_PEN));
 
-            Ellipse(
-                memDC, thumbRect.left, thumbRect.top, thumbRect.right,
-                thumbRect.bottom);
+            Ellipse(memDC, thumbRect.left, thumbRect.top, thumbRect.right, thumbRect.bottom);
 
             SelectObject(memDC, prevBrush);
             SelectObject(memDC, prevPen);
 
             char buf[16];
             sprintf_s(buf, "%.2f", s.value);
-            RECT textR = { s.x + s.width + 6, s.y, s.x + s.width + 100,
-                           s.y + s.height };
-            DrawText(
-                memDC, buf, -1, &textR, DT_LEFT | DT_VCENTER | DT_SINGLELINE);
+            RECT textR = { s.x + s.width + 6, s.y, s.x + s.width + 100, s.y + s.height };
+            DrawText(memDC, buf, -1, &textR, DT_LEFT | DT_VCENTER | DT_SINGLELINE);
         }
 
         SelectObject(memDC, oldBrush);
@@ -189,8 +182,7 @@ namespace Sliders
         for (auto& s : SlidersVector)
         {
             RECT r = s.GetRect();
-            if (mouseX >= r.left && mouseX <= r.right && mouseY >= r.top
-                && mouseY <= r.bottom)
+            if (mouseX >= r.left && mouseX <= r.right && mouseY >= r.top && mouseY <= r.bottom)
             {
                 s.value = ValueFromMouse(s, mouseX);
                 ApplySliderValue(hwnd, s);

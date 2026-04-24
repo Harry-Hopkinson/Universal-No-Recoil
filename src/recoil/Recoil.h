@@ -12,5 +12,4 @@ extern WeaponRecoil CurrentRecoil;
 
 extern int ControllerMultiplier;
 
-std::pair<float, float> CalculateRecoil(
-    float baseX, float baseY, float lookX, float lookY);
+std::pair<float, float> CalculateRecoil(float baseX, float baseY, float lookX, float lookY);

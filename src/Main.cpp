@@ -33,8 +33,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
         case WM_CREATE:
         {
-            HICON hIcon = LoadIcon(
-                GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_ICON1));
+            HICON hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_ICON1));
             SendMessage(hwnd, WM_SETICON, ICON_BIG, (LPARAM)hIcon);
 
             Buttons::CreateOperatorSelectionButtons();
@@ -52,8 +51,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
             GetClientRect(hwnd, &rect);
 
             HDC memDC = CreateCompatibleDC(hdc);
-            HBITMAP memBitmap = CreateCompatibleBitmap(
-                hdc, rect.right, rect.bottom);
+            HBITMAP memBitmap = CreateCompatibleBitmap(hdc, rect.right, rect.bottom);
             HGDIOBJ oldBitmap = SelectObject(memDC, memBitmap);
 
             HBRUSH bgBrush = CreateSolidBrush(BackgroundColour);
@@ -135,10 +133,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int nCmdShow)
     Files::LoadConfig();
 
     HWND hwnd = CreateWindowEx(
-        0, wc.lpszClassName, "Universal No Recoil",
-        (WS_OVERLAPPEDWINDOW & ~(WS_MAXIMIZEBOX | WS_THICKFRAME)),
-        CW_USEDEFAULT, CW_USEDEFAULT, WINDOW_WIDTH, WINDOW_HEIGHT, nullptr,
-        nullptr, hInstance, nullptr);
+        0, wc.lpszClassName, "Universal No Recoil", (WS_OVERLAPPEDWINDOW & ~(WS_MAXIMIZEBOX | WS_THICKFRAME)),
+        CW_USEDEFAULT, CW_USEDEFAULT, WINDOW_WIDTH, WINDOW_HEIGHT, nullptr, nullptr, hInstance, nullptr);
 
     if (!hwnd)
         return 0;
@@ -146,8 +142,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int nCmdShow)
     ShowWindow(hwnd, nCmdShow);
     UpdateWindow(hwnd);
 
-    HANDLE hWorker = CreateThread(
-        nullptr, 0, WorkerThreadProc, nullptr, 0, nullptr);
+    HANDLE hWorker = CreateThread(nullptr, 0, WorkerThreadProc, nullptr, 0, nullptr);
 
     MSG msg = {};
     while (Running)

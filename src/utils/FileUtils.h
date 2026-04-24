@@ -12,15 +12,13 @@ namespace FileUtils
      * @param outSize Output parameter for file size
      * @return Pointer to file contents in memory
      */
-    inline char* ReadFileToMemory(
-        const char* filename, DWORD* outSize = nullptr)
+    inline char* ReadFileToMemory(const char* filename, DWORD* outSize = nullptr)
     {
         if (!filename)
             return nullptr;
 
         HANDLE file = CreateFileA(
-            filename, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING,
-            FILE_ATTRIBUTE_NORMAL, NULL);
+            filename, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 
         if (file == INVALID_HANDLE_VALUE)
             return nullptr;
@@ -57,15 +55,12 @@ namespace FileUtils
      * @param buffer Data to write
      * @param length Length of data
      */
-    inline void WriteFileFromMemory(
-        const char* filename, const char* buffer, DWORD length)
+    inline void WriteFileFromMemory(const char* filename, const char* buffer, DWORD length)
     {
         if (!filename || !buffer || length == 0)
             return;
 
-        HANDLE file = CreateFileA(
-            filename, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS,
-            FILE_ATTRIBUTE_NORMAL, NULL);
+        HANDLE file = CreateFileA(filename, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 
         if (file == INVALID_HANDLE_VALUE)
             return;

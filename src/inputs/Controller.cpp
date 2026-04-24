@@ -22,8 +22,7 @@ namespace Inputs
         return state;
     }
 
-    void GetControllerStickInput(
-        const XINPUT_STATE& state, float& outX, float& outY)
+    void GetControllerStickInput(const XINPUT_STATE& state, float& outX, float& outY)
     {
         const SHORT DEADZONE = 8000;
         SHORT stickX = state.Gamepad.sThumbRX;

@@ -33,8 +33,7 @@ namespace Inputs
     /*
      * Returns the controller's stick input.
      */
-    void GetControllerStickInput(
-        const XINPUT_STATE& state, float& outX, float& outY);
+    void GetControllerStickInput(const XINPUT_STATE& state, float& outX, float& outY);
 
     /*
      * Returns true if the controller is in ADS mode (Left Trigger).

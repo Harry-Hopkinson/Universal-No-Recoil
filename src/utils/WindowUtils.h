@@ -11,8 +11,7 @@ namespace WindowUtils
      */
     inline void InvalidateWindow(HWND hwnd)
     {
-        RedrawWindow(
-            hwnd, NULL, NULL, RDW_INVALIDATE | RDW_UPDATENOW | RDW_NOERASE);
+        RedrawWindow(hwnd, NULL, NULL, RDW_INVALIDATE | RDW_UPDATENOW | RDW_NOERASE);
     }
 
     /**
@@ -22,9 +21,7 @@ namespace WindowUtils
      */
     inline void InvalidateWindowNoChildren(HWND hwnd)
     {
-        RedrawWindow(
-            hwnd, NULL, NULL,
-            RDW_INVALIDATE | RDW_UPDATENOW | RDW_NOERASE | RDW_NOCHILDREN);
+        RedrawWindow(hwnd, NULL, NULL, RDW_INVALIDATE | RDW_UPDATENOW | RDW_NOERASE | RDW_NOCHILDREN);
     }
 
 } // namespace WindowUtils
